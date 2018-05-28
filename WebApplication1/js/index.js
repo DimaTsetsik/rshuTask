@@ -16,7 +16,11 @@ $(".intit-random-film").click(function () {
 
 $(".watch-now").click(function () {
     window.open("http://www.google.com.pk/search?btnG=1&pws=0&q=" + $(".title").text(), '_blank');
-}); 
+});
+
+$(".send-message").click(function () {
+    SendUserMessage();
+});
 
 function Loader() {
     this.Show = function () {
@@ -53,7 +57,7 @@ function IntitRandomFilm() {
             Loader.Hide();
         }
     });
-}
+};
 
 function GetFilmByName() {
     Loader.Show();
@@ -81,4 +85,31 @@ function GetFilmByName() {
             Loader.Hide();
         }
     });
-}
+};
+
+function SendUserMessage() {
+    Loader.Show();
+
+    $.ajax({
+        type: "Post",
+        url: sendUserMessageLink,
+        data: {
+            userEmail: $(".user-email").val(),
+            userName: $(".user-name").val(),
+            userMessage: $(".user-message").val()
+        },
+        success: function (data) {
+            console.log(data);
+            $(".user-email").val("");
+            $(".user-name").val("");
+            $(".user-message").val("");
+            alert("Message successfully sent!");
+        },
+        error: function (data) {
+            alert("Something strange. Please try again later!");
+        },
+        complete: function (data) {
+            Loader.Hide();
+        }
+    });
+};

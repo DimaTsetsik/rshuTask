@@ -7,10 +7,12 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private IImdbService imdbService;
+        private IMailService iMailService;
 
-        public HomeController(IImdbService ImdbServicel)
+        public HomeController(IImdbService ImdbServicel, IMailService ImailService)
         {
             imdbService = ImdbServicel;
+            iMailService = ImailService;
         }
 
         [HttpPost]
@@ -42,8 +44,24 @@ namespace WebApplication1.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<bool> SendUserMessage(string userEmail, string userName, string userMessage)
+        {
+            var result = false;
+            try
+            {
+               result = await iMailService.SendMessage(userEmail, userName, userMessage);
+            }
+            catch
+            {
+                return result;
+            }
+            return result;
+        }
+
         public async Task<ActionResult> Index()
         {
+            
             return View();
         }
 

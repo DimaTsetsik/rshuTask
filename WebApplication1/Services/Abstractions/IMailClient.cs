@@ -1,12 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace WebApplication1.Services.Abstractions
 {
     /// <summary>
     /// Represents an interface of mail client
     /// </summary>
-    interface IMailClient
+    public interface IMailClient
     {
         /// <summary>
         /// Sends the email asynchronously

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Web;
 using WebApplication1.Services.Abstractions;
 
 namespace WebApplication1.Services
