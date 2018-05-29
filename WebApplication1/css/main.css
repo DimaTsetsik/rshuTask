@@ -1481,3 +1481,7 @@ textarea.form-control {
 .modal-header {
     background: rgba(0, 0, 0, 0.1);
 }
+
+.mdb.img-responsive {
+    height: 200px;
+}

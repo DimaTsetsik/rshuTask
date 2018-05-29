@@ -9,11 +9,13 @@ namespace WebApplication1.Controllers
     {
         private IImdbService imdbService;
         private IMailService iMailService;
+        private IMoviedbService iMoviedbService;
 
-        public HomeController(IImdbService ImdbServicel, IMailService ImailService)
+        public HomeController(IImdbService ImdbServicel, IMailService ImailService, IMoviedbService iMoviedbService)
         {
             imdbService = ImdbServicel;
             iMailService = ImailService;
+            this.iMoviedbService = iMoviedbService;
         }
 
         [HttpPost]
@@ -21,7 +23,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                var model = await imdbService.GetRandomFilm();
+                var model = await iMoviedbService.GetRandomFilm();
                 var c = Json(model);
                 return Json(model);
             }

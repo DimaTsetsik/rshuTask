@@ -28,6 +28,14 @@ namespace WebApplication1.Util
                    .As<IMailService>()
                    .InstancePerRequest();
 
+            builder.RegisterType<WebClientHelper>()
+                   .As<IWebClientHelper>()
+                   .InstancePerRequest();
+
+            builder.RegisterType<MoviedbService>()
+                   .As<IMoviedbService>()
+                   .InstancePerRequest();
+
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

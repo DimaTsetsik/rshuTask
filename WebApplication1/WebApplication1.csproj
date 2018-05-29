@@ -168,13 +168,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ImdbEntity.cs" />
+    <Compile Include="Models\ThemoviedbEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Abstractions\IImdbService.cs" />
     <Compile Include="Services\Abstractions\IMailClient.cs" />
     <Compile Include="Services\Abstractions\IMailService.cs" />
+    <Compile Include="Services\Abstractions\IMoviedbService.cs" />
+    <Compile Include="Services\Abstractions\IWebClientHelper.cs" />
     <Compile Include="Services\ImdbService.cs" />
     <Compile Include="Services\MailService.cs" />
+    <Compile Include="Services\MoviedbService.cs" />
     <Compile Include="Services\SmtpMailClient.cs" />
+    <Compile Include="Services\WebClientHelper.cs" />
     <Compile Include="Util\AutofacConfig.cs" />
   </ItemGroup>
   <ItemGroup>

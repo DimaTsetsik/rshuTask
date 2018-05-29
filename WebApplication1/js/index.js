@@ -14,8 +14,12 @@ $(".intit-random-film").click(function () {
     IntitRandomFilm();
 });
 
-$(".watch-now").click(function () {
-    window.open("http://www.google.com.pk/search?btnG=1&pws=0&q=" + $(".title").text(), '_blank');
+$(".watch-now:not(.mdb)").click(function () {
+    window.open("http://www.google.com.pk/search?btnG=1&pws=0&q=" + $(".title:not(.mdb)").text(), '_blank');
+});
+
+$(".mdb.watch-now").click(function () {
+    window.open("http://www.google.com.pk/search?btnG=1&pws=0&q=" + $(".mdb.title").text(), '_blank');
 });
 
 $(".send-message").click(function () {
@@ -38,17 +42,29 @@ function openSearchModal() {
     searchModal.modal("show");
 }
 
+function InitRandomModal() {
+    $(".random-film-modal").modal("show");
+    console.log(this);
+    $(".modal-body .mdb.img-responsive").attr('src', 'http://image.tmdb.org/t/p/w185/' + this.backdrop_path);
+    $(".mdb.rating").text("Rating:" + this.popularity);
+    $(".mdb.description").text(this.overview);
+    $(".mdb.title").text(this.original_title);
+    $(".mdb.cost span").text(this.release_date);
+    $(".random-film-modal").modal("show");
+}
+
 function IntitRandomFilm() {
+    if ($('.random-film-modal').is(':visible')) {
+        $(".random-film-modal").modal("hide");
+    }
+
     Loader.Show();
 
     $.ajax({
         type: "Post",
         url: getRandomFilmLink,
         success: function (data) {
-            $(".img-responsive").attr('src', data.Poster);
-            console.log(data.Poster);
-            console.log(data);
-
+            InitRandomModal.call(data);
         },
         error: function (data) {
             console.log("Error");
@@ -75,8 +91,6 @@ function GetFilmByName() {
             $(".title").text(data.Title);
             $(".awards span").text(data.Awards);
             $(".cost span").text(data.Released);
-            console.log(data.Poster);
-            console.log(data);
         },
         error: function (data) {
             console.log("Error");
