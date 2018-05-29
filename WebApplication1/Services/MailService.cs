@@ -41,7 +41,7 @@ namespace WebApplication1.Services
                 var subject = "Contact Message";
                 result = await mailClient.SendEmailAsync(ConfigurationManager.AppSettings["adminEmail"], subject, body);
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
                 throw new NotImplementedException();
             }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebApplication1.Services.Abstractions;
 
@@ -54,7 +55,7 @@ namespace WebApplication1.Controllers
             }
             catch
             {
-                return result;
+                throw new NotImplementedException();
             }
             return result;
         }

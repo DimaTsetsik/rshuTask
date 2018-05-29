@@ -28,7 +28,6 @@ namespace WebApplication1.Services
         }
 
         public async Task<T> InitWebClientHelper<T>(string url) {
-
             using (WebClient wc = new WebClient())
             {
                 try
@@ -41,7 +40,7 @@ namespace WebApplication1.Services
                 }
                 catch (Exception e)
                 {
-                    throw new Exception("Internal fucked error");
+                    throw new Exception($"Internal fucked error: {e.Data}");
                 }
             }
         }
